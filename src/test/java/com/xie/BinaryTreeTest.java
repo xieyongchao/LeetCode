@@ -1,5 +1,6 @@
 package com.xie;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -17,6 +18,17 @@ public class BinaryTreeTest {
         binaryTree.list.clear();
         binaryTree.postOrder(binaryTree.root);
         printList(binaryTree.list);
+    }
+
+    @Test
+    public void TestIterate() {
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.init();
+        binaryTree.preOrderIterate(binaryTree.root);
+        System.out.println();
+        binaryTree.inOrderIterate(binaryTree.root);
+        System.out.println();
+        binaryTree.postOrderIterate(binaryTree.root);
     }
 
     @Test

@@ -2,6 +2,8 @@ package com.xie;
 
 
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class BinaryTree {
     public Node root;
@@ -84,6 +86,63 @@ public class BinaryTree {
             dep = Math.min(minL, minR) + 1;
         }
         return dep;
+    }
+
+    public void preOrderIterate(Node root) {
+        if (root == null) {
+            return;
+        }
+        Stack<Node> s = new Stack<>();
+        Node pre = root;
+        while (pre != null || !s.empty()) {
+            if (pre != null) {
+                s.push(pre);
+                System.out.print(pre.data);
+                pre = pre.lchild;
+            } else {
+                pre = s.pop();
+                pre = pre.rchild;
+            }
+        }
+    }
+
+    public void inOrderIterate(Node root) {
+        if (root == null) return;
+        Node pre = root;
+        Stack<Node> s = new Stack<>();
+        while (pre != null || !s.empty()) {
+            if (pre != null) {
+                s.push(pre);
+                pre = pre.lchild;
+            } else {
+                pre = s.pop();
+                System.out.print(pre.data);
+                pre = pre.rchild;
+            }
+        }
+    }
+
+    public void postOrderIterate(Node root) {
+        if (root == null) return;
+        Node pre = root;
+        Stack<Node> s = new Stack<>();
+        s.push(root);
+        while (!s.empty()) {
+            Node t = s.peek();
+            if ((t.lchild == null && t.rchild == null) || (pre == t.lchild || pre == t.rchild)) {
+                System.out.print(t.data);
+                s.pop();
+            } else {
+                if (t.rchild != null) {
+                    pre = t.rchild;
+                    s.push(pre);
+                }
+                if (t.lchild != null) {
+                    pre = t.lchild;
+                    s.push(pre);
+                }
+            }
+        }
     }
 
 
