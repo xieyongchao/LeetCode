@@ -12,6 +12,9 @@ public class App
 {
     public static void main( String[] args )
     {
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.createTree0(binaryTree.root);
+        binaryTree.layerOrder2(binaryTree.root);
         System.out.println( "Hello World!" );
     }
     /*
